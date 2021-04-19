@@ -11,7 +11,7 @@ jobs:
   docker-publish-windows:
     # We run on the self hosted windows runner
     name: 'Docker Publish (windows)'
-    runs-on: [windows, x64]
+    runs-on: [windows-latest, x64]
 
     steps:
       # We're demonstrating we've checked the source code out.
