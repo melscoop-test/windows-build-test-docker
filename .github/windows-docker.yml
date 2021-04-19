@@ -1,0 +1,37 @@
+name: 'Docker Publish (windows)'
+
+# We run on every push to master
+on:
+  push:
+    branches:
+      - master
+      - docker-publish-windows
+
+jobs:
+  docker-publish-windows:
+    # We run on the self hosted windows runner
+    name: 'Docker Publish (windows)'
+    runs-on: [self-hosted, windows, x64]
+
+    steps:
+      # We're demonstrating we've checked the source code out.
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+
+
+      # We demonstrate we are able to log in into Harbor.
+      # - name : 'Login to Harbor'
+      #   uses: docker/login-action@v1
+      #  with:
+      #    registry: reg.scout24.ch
+      #    username: ${{ secrets.DOCKER_USERNAME }}
+      #    password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # We demonstrate we can build and publish the image to Harbor
+      # - name: 'Push to Harbor'
+      #  uses: docker/build-push-action@v2
+      #  with:
+      #    push: true
+      #    context: Dockerfiles
+      #    file: Dockerfile.license.windows
+      #    tags: melscoop/devops/license:latest
